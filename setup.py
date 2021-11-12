@@ -5,6 +5,7 @@ import os
 import sys
 from shutil import rmtree
 from setuptools import find_packages, setup, Command
+from distutils.core import Extension
 
 cwd = os.getcwd()
 cwd = cwd.replace('\\', '/')
@@ -14,7 +15,7 @@ DESCRIPTION = 'Handy nuclear tools for quick calculation and reference'
 URL = 'https://github.com/jablevin/NuclearTools'
 AUTHOR = 'Jacob Blevins'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.0.6'
+VERSION = '0.0.607'
 
 
 REQUIRED = ['pint',
@@ -72,6 +73,17 @@ class UploadCommand(Command):
         sys.exit()
 
 
+<<<<<<< HEAD
+module1 = Extension('NuclearTools.MD2D',
+                    sources = ['NuclearTools/MD2D.c'])
+
+module2 = Extension('NuclearTools.MD3D',
+                    sources = ['NuclearTools/MD3D.c'])
+=======
+module1 = Extension('MD',
+                    sources = ['MD.c'])
+>>>>>>> c00b2713afa9362296e2c87a8e260c48fc6e5ec5
+
 setup(
     name=NAME,
     version=about['__version__'],
@@ -82,6 +94,11 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=URL,
     packages=find_packages(exclude=('tests',)),
+<<<<<<< HEAD
+    ext_modules = [module1, module2],
+=======
+    ext_modules = [module1],
+>>>>>>> c00b2713afa9362296e2c87a8e260c48fc6e5ec5
 
     install_requires=REQUIRED,
     package_data={'NuclearTools': ['Nuclide_Data.txt']},
